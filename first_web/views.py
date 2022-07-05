@@ -1,4 +1,6 @@
 # python manage.py runserver
+# test by shengdao
+# test by shengdao2
 
 from django.shortcuts import render
 from django.conf import settings
