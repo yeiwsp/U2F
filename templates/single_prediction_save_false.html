@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>纠正分类</title>
+    <style>
+        body{
+            background-color: rgb(204, 212, 230);
+            display: flex;
+            justify-content: center;
+        }
+
+         .a{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: white 10px solid;
+            background-color: rgb(120,140,200);
+            top: 100px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .b h2{
+            position: relative;
+            color: yellow;
+            height: 20px;
+
+        }
+        .first label{
+            vertical-align: top;
+            text-align: right;
+        }
+
+        .first textarea{
+            background-color: rgb(204, 212, 230);
+            border-radius: 10px;
+            border: 0;
+            outline: None;
+            position: relative;
+        }
+
+        .second label{
+            vertical-align: top;
+            text-align: right;
+        }
+
+        .second textarea{
+            background-color: rgb(204, 212, 230);
+            border-radius: 10px;
+            border: 0;
+            outline: None;
+            position: relative;
+        }
+
+
+        .selectbox{
+            width: 80px;
+            height: 40px;
+            font-family: 宋体;
+            font-size: 20px;
+            color: #25aae1;
+            background-color: rgb(204, 212, 230);
+            border-radius: 10px;
+            border: 0;
+            outline: None;
+
+        }
+
+        #frozen-btn button {
+            border: 0;
+            margin: 20px;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px 50px;
+            border-radius: 50px;
+            color: white;
+            outline: none;
+            position: relative;
+            top: 0px;
+        }
+
+        #frozen-btn button:before {
+            content: '';
+            display: block;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.4) 50%);
+            background-size: 210% 100%;
+            background-position: right bottom;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            border-radius: 50px;
+            transition: all 1s;
+            -webkit-transition: all 1s;
+        }
+
+        #frozen-btn .green {
+            background-image: linear-gradient(to right, #25aae1, #40e495);
+            box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+        }
+
+        #frozen-btn .purple {
+            background-image: linear-gradient(to right, #6253e1, #852D91);
+            box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+        }
+
+        #frozen-btn .purple:hover:before {
+            background-position: left bottom;
+        }
+
+        #frozen-btn .green:hover:before {
+            background-position: left bottom;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function thank() {
+            alert("感谢您的校正，结果已成功入库！")
+        }
+
+    </script>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="a">
+            <div class="b" align="center">
+                <h2>校正分类</h2>
+            </div>
+
+            <div class="first" align="center">
+                <h3>新闻标题</h3>
+                <textarea id="title" name="title" cols="100" rows="2" readonly>{{ title }}</textarea>
+            </div>
+
+
+            <div class="second" align="center">
+                <h3>新闻内容</h3>
+                <textarea name="content" id="content" cols="100" rows="10" readonly>{{ content }}</textarea>
+            </div>
+
+            <div class="pre_label" align="center">
+                <span>
+                    <h3>
+                        正确结果
+                                <select name="remark_label" id="remark_label" class="selectbox">
+                                    <option value="财经">财经</option>
+                                    <option value="房产">房产</option>
+                                    <option value="汽车">汽车</option>
+                                    <option value="科技">科技</option>
+                                    <option value="体育">体育</option>
+                                    <option value="娱乐">娱乐</option>
+                                    <option value="教育">教育</option>
+                                    <option value="军事">军事</option>
+                                    <option value="游戏">游戏</option>
+                                    <option value="其他">其他</option>
+                                </select>
+
+
+                    </h3>
+
+                </span>
+            </div>
+
+
+            <div id="frozen-btn" align="center">
+                <button class="purple" name="remark" onclick="thank()">校正结果</button>
+                <button class="green" name="back2" value="back2" >返回主页</button>
+            </div>
+
+
+
+
+        </div>
+
+    </form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据库展示</title>
+    <style>
+        body{
+            background-color: rgb(204, 212, 230);
+            display: flex;
+            justify-content: center;
+        }
+
+         .a{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: white 10px solid;
+            background-color: rgb(120,140,200);
+            top: 100px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <div class="a">
+            <table>
+                <thead>
+                    <tr>
+                    <th>title</th>
+                    <th>content</th>
+                    <th>label</th>
+                    </tr>
+                </thead>
+                {% for data in datas.values %}
+                <tr>
+                    <th>{{ data[0] }}</th>
+                    <th>2</th>
+                    <th>3</th>
+
+                </tr>
+                {% endfor %}
+
+
+            </table>
+
+
+        </div>
+
+    </form>
+
+
+
+</body>
+</html>

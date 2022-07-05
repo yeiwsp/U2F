@@ -1,0 +1,72 @@
+<html>
+<head>
+<script>
+    function showSuggest(){
+
+    var txtBox = window.document.getElementById("TextBox1");
+    var lstBox = window.document.getElementById("ListBox1");
+    var strInput = txtBox.value;
+    var arrMatch = new Array();  //用以匹配的字符串数组
+    var strMatch;     //匹配成功的字符串
+    arrMatch = ["1111","11111aaaa","21122","5511115"];
+    removeAll("ListBox1")
+    for(var i=0; i<arrMatch.length;i++)
+    {
+     strMatch= arrMatch[i];
+     if(strMatch.indexOf(strInput)>=0){
+
+      var opt =document.createElement("OPTION");
+      opt.text = arrMatch[i].toString();
+      opt.value = arrMatch[i];
+      lstBox.add(opt);
+     }
+    }
+
+    if(lstBox.hasChildNodes()){
+
+       lstBox.style.display = "block"; //显示
+    }
+    else
+    {
+        lstBox.style.display = "none"; //隐藏
+
+    }
+
+    }
+
+
+    //将id为listId的列表中的内容全部移除
+    function removeAll(listId){
+
+    var lst=window.document.getElementById(listId);
+    var length=lst.options.length;
+    for(var i = length; i>0; i--)
+    {
+     lst.options[i - 1].parentNode.removeChild(lst.options[i - 1]);
+
+    }
+    }
+
+    //将listbox中选中项的内容复制到文本框中
+    function moveSelect() {
+     var txtBox = window.document.getElementById("TextBox1");
+	 var listBox =window.document.getElementById("ListBox1");
+	 var length = lstBox.options.length;
+	 for(var i = 0; i< length; i++)
+	 {
+	     var listindex = listBox.selectedIndex;
+		 if(listindex < 0)
+		 return;
+		 txtBox.value = listBox.options[listindex].text;
+	 }
+    	//隐藏listbox
+		listBox.style.display = "none";
+    }
+	</script>
+	</head>
+	<body>
+	<input type="text" id="TextBox1" onkeyup="showSuggest()">
+	<select id="ListBox1" size="10" onclick="moveSelect()" style="display:none;"></select>
+    </body>
+
+</html>

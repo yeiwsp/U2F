@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单条新闻分类</title>
+    <style>
+        body{
+            background-color: rgb(204, 212, 230);
+            display: flex;
+            justify-content: center;
+        }
+        label{
+            display:inline-block;
+            width:100px;
+            vertical-align: top;
+            margin: auto;
+            text-align:right;
+        }
+
+        .a{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: white 10px solid;
+            background-color: rgb(120,140,200);
+            top: 100px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .b h2{
+            position: relative;
+            color: yellow;
+            height: 20px;
+
+        }
+
+        .first label{
+            vertical-align: top;
+            text-align: right;
+        }
+
+        .first textarea{
+            font-size: 14px;
+            font-family: 宋体 ;
+            background-color: rgb(204, 212, 230);
+            border-radius: 10px;
+            border: 0;
+            outline: None;
+            position: relative;
+        }
+
+        .second label{
+            vertical-align: top;
+            text-align: right;
+        }
+
+        .second textarea{
+            font-size: 14px;
+            font-family: 宋体 ;
+            background-color: rgb(204, 212, 230);
+            border-radius: 10px;
+            border: 0;
+            outline: None;
+            position: relative;
+        }
+
+
+        #frozen-btn button {
+            border: 0;
+            margin: 20px;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px 50px;
+            border-radius: 50px;
+            color: white;
+            outline: none;
+            position: relative;
+        }
+
+        #frozen-btn button:before {
+            content: '';
+            display: block;
+            background-size: 210% 100%;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.4) 50%);
+            background-size: 210% 100%;
+            background-position: right bottom;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            border-radius: 50px;
+            transition: all 1s;
+            -webkit-transition: all 1s;
+        }
+
+        #frozen-btn .green {
+            background-image: linear-gradient(to right, #25aae1, #40e495);
+            box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+        }
+
+        #frozen-btn .purple {
+            background-image: linear-gradient(to right, #6253e1, #852D91);
+            box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+        }
+
+        #frozen-btn .purple:hover:before {
+            background-position: left bottom;
+        }
+
+        #frozen-btn .green:hover:before {
+            background-position: left bottom;
+        }
+
+        #news_link a:hover{
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="a">
+        <form action="/single_prediction_result/" method="post">
+            {% csrf_token %}
+                <div class = "b" align="center">
+                    <span>
+                        <h2>新闻页面</h2>
+                    </span>
+                </div>
+
+
+                <div align="center" id="news_link">
+                    <!-- 外网的链接要加上http协议 -->
+                    <a href="http://news.baidu.com/" target="_blank">百度新闻</a>&nbsp;&nbsp;
+                    <a href="https://news.sina.com.cn/" target="_blank">新浪新闻</a>&nbsp;&nbsp;
+                    <a href="https://news.163.com/" target="_blank">网易新闻</a>&nbsp;&nbsp;<br>
+                    <a href="https://www.ifeng.com/" target="_blank">凤凰新闻</a>&nbsp;&nbsp;
+                    <a href="https://news.qq.com/" target="_blank">腾讯新闻</a>&nbsp;&nbsp;
+                    <a href="http://www.people.com.cn/" target="_blank">人&nbsp;&nbsp;民&nbsp;&nbsp;网</a>&nbsp;&nbsp;<br>
+
+
+                </div>
+
+            <hr>
+
+                <div class="first"  align="center">
+                    <!--<lable for="title" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新闻标题</lable> -->
+                    <h3>新闻标题</h3>
+                    <textarea id = "title" name = "title" cols="100" rows="2" placeholder="请在此处输入新闻标题" ></textarea>
+                 </div>
+
+
+                <div class="second" align="center">
+                    <!--<label for="content">新闻内容</label> -->
+                    <h3>新闻内容</h3>
+                    <textarea name="content" id="content" cols="100" rows="10" placeholder="请在此处输入新闻内容" ></textarea>
+                    <!--<input type="text", id="content", name="content", placeholder="请在此处输入新闻内容" required/>-->
+                </div>
+
+                <div id="frozen-btn" align="center">
+                    <button class="purple" type="submit" name="commit" value="commit_fast">新闻分类(效率)</button>
+                    <button class="purple" type="submit" name="commit" value="commit_accuracy">新闻分类(精度)</button>
+                    <button class="green" type="submit" name="back" value="back">返回主页</button>
+                </div>
+
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>批量预测</title>
+    <style>
+        body{
+            background-color: rgb(204, 212, 230);
+            display: flex;
+            justify-content: center;
+        }
+        label{
+            display:inline-block;
+            width:100px;
+            vertical-align: top;
+            margin: auto;
+            text-align:right;
+        }
+
+        .a{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: white 10px solid;
+            background-color: rgb(120,140,200);
+            top: 100px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .b h2{
+            position: relative;
+            color: yellow;
+            height: 20px;
+
+        }
+
+        .first label{
+            vertical-align: top;
+            text-align: right;
+        }
+
+        .first textarea{
+            font-size: 14px;
+            font-family: 宋体 ;
+            background-color: rgb(204, 212, 230);
+            border-radius: 10px;
+            border: 0;
+            outline: None;
+            position: relative;
+        }
+
+        .second label{
+            vertical-align: top;
+            text-align: right;
+        }
+
+        .second textarea{
+            font-size: 14px;
+            font-family: 宋体 ;
+            background-color: rgb(204, 212, 230);
+            border-radius: 10px;
+            border: 0;
+            outline: None;
+            position: relative;
+        }
+
+
+        #frozen-btn button {
+            border: 0;
+            margin: 20px;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px 50px;
+            border-radius: 50px;
+            color: white;
+            outline: none;
+            position: relative;
+        }
+
+        #frozen-btn button:before {
+            content: '';
+            display: block;
+            background-size: 210% 100%;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.4) 50%);
+            background-size: 210% 100%;
+            background-position: right bottom;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            border-radius: 50px;
+            transition: all 1s;
+            -webkit-transition: all 1s;
+        }
+
+        #frozen-btn .green {
+            background-image: linear-gradient(to right, #25aae1, #40e495);
+            box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+        }
+
+        #frozen-btn .purple {
+            background-image: linear-gradient(to right, #6253e1, #852D91);
+            box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+        }
+
+        #frozen-btn .upload{
+            background-image: linear-gradient(to right, #6253e1, #852D91);
+            box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+            height: 60px;
+            width: 200px;
+
+        }
+
+        #frozen-btn .purple:hover:before {
+            background-position: left bottom;
+        }
+
+        #frozen-btn .green:hover:before {
+            background-position: left bottom;
+        }
+
+        #frozen-btn .upload:hover:before{
+            background-position: left bottom;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function desc() {
+            alert("点击确定后请耐心等待10分钟左右！")
+           {#document.getElementsByClassName("before_load")[0].setAttribute("display", "none")#}
+           {# document.getElementsByClassName("after_load")[0].setAttribute("display", "block")#}
+        }
+
+    </script>
+
+</head>
+<body>
+    <div class="a">
+        <form action="batch_prediction_result/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class = "b" align="center">
+                    <span>
+                        <h2>批量分类</h2>
+                    </span>
+                </div>
+
+
+            <hr>
+
+            <div align="center">
+                <h3>支持上传的文件格式: .xlsx 与 .csv</h3>
+                <span>
+                    <div>
+                        <h3>表格内容形式：</h3>
+                        
+                    </div>
+                    <table>
+                        <tr>
+                            <th>content &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                            <th>channelName&nbsp;&nbsp; &nbsp;&nbsp;</th>
+                            <th>title&nbsp;&nbsp; &nbsp;&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <th>新闻内容1 &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                            <th></th>
+                            <th>新闻标题1 &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <th>新闻内容2 &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                            <th></th>
+                            <th>新闻标题2 &nbsp;&nbsp; &nbsp;&nbsp;</th>
+                        </tr>
+                    </table>
+                </span>
+
+
+            </div>
+
+            <h3 align="center">注意事项</h3>
+
+
+            <ol type="1" style="position: relative; left: 200px;" class="before_load">
+                <div>
+                    <li>文件格式不符合时，系统仅刷新预测页面！</li>
+                    <li>表格中channelName一栏自定，可给出正确结果方便校正！</li>
+                    <li>我们将会在channelName一栏给出预测结果</li>
+                    <li>文件上传后请耐心等待10分钟左右！</li>
+                </div>
+
+
+            </ol>
+            <div style="font-family: '宋体'; display:none; alignment: center" class="after_load">
+                <div>
+                    <h3>文件上传成功，请耐心等待，10分钟上下我们将会返回结果文件</h3>
+                </div>
+
+            </div>
+
+
+            <hr>
+
+            <br>
+
+
+
+
+                <div id="frozen-btn" align="center">
+
+                    <div>
+                        <label for="file" >文件上传：&nbsp;</label>
+                        <input type="file" id="file" name="excel_file" class="purple"/>
+                    </div>
+                    <br>
+
+
+                    <button class="purple" type="submit" name="file_commit" value="file_commit_fast" onclick="desc()">新闻分类(效率)</button>
+                    <button class="purple" type="submit" name="file_commit" value="file_commit_accuracy" onclick="desc()">新闻分类(精度)</button>
+                    <button class="green" type="submit" name="back" value="back">返回主页</button>
+
+                </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</body>
+</html>
