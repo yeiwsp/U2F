@@ -1,5 +1,4 @@
 # python manage.py runserver
-# 这是最后一次测试
 
 from django.shortcuts import render
 from django.conf import settings
@@ -35,11 +34,12 @@ bert_tfidf_source = 'D:/stitp/software_match/train_model/fasttext_try_all.model.
 
 # 设置bert+tf-idf模型只加载一次
 model_name = 'bert'
-with open('D:/stitp/software_match/train_model/' + model_name + '.yml', 'r') as f:
+# with open('./train_model/' + model_name + '.yml', 'r') as f:
+with open('D:/stitp/software_match/train_model/'+model_name + '.yml', 'r') as f:
     yaml_string = yaml.load(f)
 model = model_from_yaml(yaml_string, custom_objects=get_custom_objects())
 print('加载权重..........')
-model.load_weights('D:/stitp/software_match/train_model/' + model_name + '_new.hdf5')
+model.load_weights('D:/stitp/software_match/train_model/'+model_name + '_new.hdf5')
 
 # 基于numpy的余弦相似性计算，用于计算两个文本之间的相似度
 def np_cos_Distance(vector1, vector2):
@@ -661,7 +661,7 @@ def batchPredictionResult(request):
                 data_file.loc[i:i, 'confidence_fasttext'] = confidence_fasttext
 
             # 获取分词后样本的tf-idf特征
-            tfidf_vectorizer = pickle.load(open('D:/stitp/software_match/train_model/tfidf.pkl', 'rb'))
+            tfidf_vectorizer = pickle.load(open('train_model/tfidf.pkl', 'rb'))
             test_tfidf = tfidf_vectorizer.transform(data_file['segments'])
             test_tfidf_feature = test_tfidf.toarray()
 
@@ -754,4 +754,3 @@ def showList(request):
     return render(request, "show_list.html", context={'datas': datas})
 
 # python manage.py runserver
-# 测试1
