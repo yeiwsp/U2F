@@ -1,0 +1,111 @@
+body{
+            background-color: rgb(204, 212, 230);
+            display: flex;
+            justify-content: center;
+        }
+        label{
+            display:inline-block;
+            width:100px;
+            vertical-align: top;
+            margin: auto;
+            text-align:right;
+        }
+
+        a{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: white 10px solid;
+            background-color: rgb(120,140,200);
+            top: 100px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .b h2{
+            position: relative;
+            color: yellow;
+            height: 20px;
+
+        }
+
+        .first label{
+            vertical-align: top;
+            text-align: right;
+        }
+
+        .first textarea{
+            font-size: 14px;
+            font-family: 宋体 ;
+            background-color: rgb(204, 212, 230);
+            border-radius: 10px;
+            border: 0;
+            outline: None;
+            position: relative;
+        }
+
+        .second label{
+            vertical-align: top;
+            text-align: right;
+        }
+
+        .second textarea{
+            font-size: 14px;
+            font-family: 宋体 ;
+            background-color: rgb(204, 212, 230);
+            border-radius: 10px;
+            border: 0;
+            outline: None;
+            position: relative;
+        }
+
+
+        #frozen-btn button {
+            border: 0;
+            margin: 20px;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px 50px;
+            border-radius: 50px;
+            color: white;
+            outline: none;
+            position: relative;
+        }
+
+        #frozen-btn button:before {
+            content: '';
+            display: block;
+            background-size: 210% 100%;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.4) 50%);
+            background-size: 210% 100%;
+            background-position: right bottom;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            border-radius: 50px;
+            transition: all 1s;
+            -webkit-transition: all 1s;
+        }
+
+        #frozen-btn .green {
+            background-image: linear-gradient(to right, #25aae1, #40e495);
+            box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+        }
+
+        #frozen-btn .purple {
+            background-image: linear-gradient(to right, #6253e1, #852D91);
+            box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+        }
+
+        #frozen-btn .purple:hover:before {
+            background-position: left bottom;
+        }
+
+        #frozen-btn .green:hover:before {
+            background-position: left bottom;
+        }

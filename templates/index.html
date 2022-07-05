@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻文本分类首页</title>
+    <style>
+        body{
+            background-color: rgb(204, 212, 230);
+            display: flex;
+            justify-content: center;
+        }
+        .a{
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: #fff 10px solid;
+            background-color: rgb(120,140,200);
+            top: 100px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .b{
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            left: 0;
+            margin: 75px 50px;
+            transition: 1s;
+        }
+        .b a{
+            text-decoration: none;
+            color: #fff;
+            font: 900 28px '';
+        }
+        .b h2{
+            /* 鼠标放开时的动画，第一个值是动画的过渡时间
+            第二个值是延迟一秒后执行动画 */
+            transition: .5s 1s;
+            opacity: 0;
+            color: rgb(30,210,200);
+        }
+        .b span{
+            transition: .5s 1s;
+            color: #fff;
+            font: 500 15px '';
+            position: absolute;
+            top: 70px;
+        }
+        .c{
+            position: absolute;
+            top: -130px;
+            right: -240px;
+        }
+        .d,.e{
+            position: absolute;
+            right: calc(var(--i)*100px);
+            width: calc(var(--w)*40px);
+            height: 500px;
+            overflow: hidden;
+            border-radius: 100px;
+            transform: rotateZ(220deg) translate(0,0);
+            background: rgb(240,220,150);
+            transition: .5s .5s;
+        }
+        .d:nth-child(2){
+            background: rgb(240,190,230);
+        }
+        .e{
+            left: -470px;
+            top: -140px;
+            width: 70px;
+            background-color: rgb(90,220,150);
+        }
+        .a:hover .c div{
+            /* 设置延迟动画 */
+            transition: .5s calc(var(--i)*.1s);
+            /* 移动的轨迹 */
+            transform: rotateZ(220deg) translate(-200px,400px);
+        }
+        .a:hover .b{
+            transition: 1s .5s;
+            left: 370px;
+        }
+        .a:hover .b span{
+            transition: 1s .5s;
+            top: 105px;
+        }
+        .a:hover .b h2{
+            transition: 1s .5s;
+            opacity: 1;
+        }
+        .f{
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: 70px;
+            background-size: cover;
+            margin: 50px;
+            left: 50px;
+            opacity: 0;
+            transition: .5s;
+            font-family: 楷体;
+        }
+        .a:hover .f{
+            transition: 1s 1.3s;
+            opacity: 1;
+        }
+
+        #frozen-btn button {
+            align-content: center;
+            border: 0;
+            margin: 20px;
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px 50px;
+            border-radius: 50px;
+            color: white;
+            outline: none;
+            position: relative;
+            top: 400px;
+        }
+
+        #frozen-btn button:before {
+            content: '';
+            display: block;
+            background: linear-gradient(to left, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.4) 50%);
+            background-size: 210% 100%;
+            background-position: right bottom;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            border-radius: 50px;
+            transition: all 1s;
+            -webkit-transition: all 1s;
+        }
+
+        #frozen-btn .green {
+            background-image: linear-gradient(to right, #25aae1, #40e495);
+            box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+        }
+
+        #frozen-btn .purple {
+            background-image: linear-gradient(to right, #6253e1, #852D91);
+            box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+        }
+
+        #frozen-btn .purple:hover:before {
+            background-position: left bottom;
+        }
+
+        #frozen-btn .green:hover:before {
+            background-position: left bottom;
+        }
+    </style>
+</head>
+<body>
+    <!-- 名片分三大块
+    最外层的一块a
+    文字一大块b
+    平面圆柱一块c -->
+    <div class="a">
+        <div class="b">
+            <a href="#" style="font-family: 楷体">新闻文本分类</a>
+            <h2>News Classify</h2>
+            <span style="font-family: 楷体">
+                <div style=" font-size: 25px">已经支持的功能：</div>
+                <br>
+
+                <div style="font-size: 20px">
+                    单条新闻分类 <br>
+                    批量新闻分类 <br>
+                    分类结果校正 <br>
+                    分类结果入库 <br>
+
+                </div>
+            </span>
+        </div>
+        <div class="c">
+            <!-- --i是用来计算平面圆柱的动效延迟和距离的
+            --w则是用来计算平面圆柱的宽度 -->
+            <div class="d" style="--i:1;--w:1.5"></div>
+            <div class="d" style="--i:2;--w:1.6"></div>
+            <div class="d" style="--i:3;--w:1.4"></div>
+            <div class="d" style="--i:4;--w:1.7"></div>
+            <div class="e" style="--i:1"></div>
+        </div>
+        <!-- 设置内容 -->
+        <div class="f">
+            <br> <br> <br>
+            <br> <br>
+
+            <p style="color: white">南京邮电大学</p>
+            <p style="color: white ">2021软件杯</p>
+            <p style="color: white ">梧桐</p>
+        </div>
+        <!-- 设置按钮 -->
+        <div id="frozen-btn" align="center">
+            <form action="/single_prediction/" method="post">
+                 {% csrf_token %}
+                <button class="purple" type="submit" name="single_pre" value="single_pre">单条分类</button>
+
+            </form>
+            <form action="/batch_prediction/"  method="post">
+                {% csrf_token %}
+                <button class="green" type="submit" name="batch_pre" value="batch_pre">批量分类</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
